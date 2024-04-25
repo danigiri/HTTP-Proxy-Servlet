@@ -15,6 +15,7 @@ jobs:
        include:
          - HTTPCLIENT_VERSION: 4.5.13
            HTTPCLIENT_TEST_VERSION: 4.3.6
+           JAKARTA_VERSION: [5.0.0, 6.0.0]
            JDOC: "site"           
            
     steps:
@@ -27,6 +28,7 @@ jobs:
       env:
           HTTPCLIENT_VERSION: ${{ matrix.HTTPCLIENT_VERSION }}
           HTTPCLIENT_TEST_VERSION: ${{ matrix.HTTPCLIENT_TEST_VERSION }}
+          JAKARTA_VERSION: ${{ matrix.JAKARTA_VERSION }}
           JDOC: ${{ matrix.JDOC }}
-      run: mvn -B -Dhttpclient.version=$HTTPCLIENT_VERSION -Dhttpclient.test.version=$HTTPCLIENT_TEST_VERSION verify $JDOC
+      run: mvn -B -Dhttpclient.version=$HTTPCLIENT_VERSION -Dhttpclient.test.version=$HTTPCLIENT_TEST_VERSION -Djakarta.version=$JAKARTA_VERSION verify $JDOC
         
